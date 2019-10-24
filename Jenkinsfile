@@ -17,7 +17,7 @@ node {
        withMaven(jdk: 'JDK.1.8.0_222', maven: 'maven') {
        sh 'mvn verify sonar:sonar \
           -Dsonar.projectKey=atulpro-org.maven-example \
-          -Dsonar.organization=atulpro-org \
+          -Dsonar.organization=itrainwo \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=3fdeef44dc2f1eb8e4573c46a06616cfd4a85605'
        }
