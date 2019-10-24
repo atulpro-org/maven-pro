@@ -1,25 +1,25 @@
 node {
    
    stage('Code Checkout') { // for display purposes
-    git credentialsId: 'githubID', url: 'https://github.com/itrainwarriors/maven-pro.git'  
+    git credentialsId: 'maven', url: 'https://github.com/atulpro-org/maven-pro/.git'  
    }
    stage('Code Build') {
-    withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
+    withMaven(jdk: 'JDK.1.8.0_222', maven: 'maven') {
      sh 'mvn clean compile'
     }  
    }
    stage('Unit Test') {
-       withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
+       withMaven(jdk: 'JDK.1.8.0_222', maven: 'maven') {
         sh 'mvn test'
      }  
    }
    stage('SonarQube Analysis') {
-       withMaven(jdk: 'JDK-1.8', maven: 'Maven-3.6.1') {
+       withMaven(jdk: 'JDK.1.8.0_222', maven: 'maven') {
        sh 'mvn verify sonar:sonar \
-          -Dsonar.projectKey=maven-pro-warriors \
-          -Dsonar.organization=itrainwarriors \
+          -Dsonar.projectKey=atulpro-org.maven-example \
+          -Dsonar.organization=atulpro-org \
           -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=2fb178159cb20ad53e509c20446600dc3de796bc '
+          -Dsonar.login=3fdeef44dc2f1eb8e4573c46a06616cfd4a85605'
        }
    } 
    stage('Archive to Jfrog') {
