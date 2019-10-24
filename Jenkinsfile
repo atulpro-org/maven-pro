@@ -1,7 +1,7 @@
 node {
    
    stage('Code Checkout') { // for display purposes
-    git credentialsId: 'maven', url: 'https://github.com/atulpro-org/maven-pro/.git'  
+    git credentialsId: 'maven', url: 'https://github.com/atulpro-org/maven-pro.git'  
    }
    stage('Code Build') {
     withMaven(jdk: 'JDK.1.8.0_222', maven: 'maven') {
